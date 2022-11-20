@@ -26,7 +26,7 @@ export default function Queries() {
 
   useEffect( () => {    
       listQueries()
-  },[])
+  })
 
   return (
     <div>

@@ -18,7 +18,7 @@ export default function DashBoard() {
     navigate('/list-userDetails')
   }
   const handleRequest = async() => {
-    let res =await axios.get(`${env.apiUrl}/list-queries`,{
+      await axios.get(`${env.apiUrl}/list-queries`,{
       headers:{"Authorization":`Bearer ${token}`}
     }).then(data => setTickets(data.data.result))
     

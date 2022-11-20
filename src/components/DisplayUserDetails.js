@@ -10,7 +10,7 @@ export default function DisplayUserDetails() {
     const token = sessionStorage.getItem("token")
 
     const listDetails = async() => {
-      let res = await axios.get(`${env.apiUrl}/users/user-details/`,{
+      await axios.get(`${env.apiUrl}/users/user-details/`,{
         headers:{"Authorization":`Bearer ${token}`}
       }).then((data) => setdata(data.data.requests))
     }
@@ -20,13 +20,13 @@ export default function DisplayUserDetails() {
     })
 
     const handleAccess = async(datum) => {
-      let res = await axios.put(`${env.apiUrl}/update-access/${datum._id}`,{},{
+      await axios.put(`${env.apiUrl}/update-access/${datum._id}`,{},{
         headers:{"Authorization":`Bearer ${token}`}
       }).then((data) => console.log(data))
     }
 
     const handleDelete = async(datum) => {
-      let res = await axios.delete(`${env.apiUrl}/delete-user/${datum._id}`,{},{
+        await axios.delete(`${env.apiUrl}/delete-user/${datum._id}`,{},{
         headers:{"Authorization" : `Bearer ${token}`}
       }).then(data => console.log(data))
     }

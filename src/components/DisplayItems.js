@@ -20,11 +20,11 @@ export default function DisplayItems(props) {
 
     const handleAssign = async() => {
       let history = "request assigned to " + email 
-      let result =await axios.put(`${env.apiUrl}/update-status/${props.value._id}`,{},{
+      await axios.put(`${env.apiUrl}/update-status/${props.value._id}`,{},{
         headers:{"Authorization":`Bearer ${token}`}
       }).then(data => console.log(data))
 
-      let addDetails = await axios.post(`${env.apiUrl}/add-details`,{ 
+      await axios.post(`${env.apiUrl}/add-details`,{ 
         requestId , 
         history ,
       }).then(data => console.log(data)).then(handleClose).then(navigate('/list-queries'))
@@ -34,12 +34,12 @@ export default function DisplayItems(props) {
     const handleSolve = async() => {
       console.log(solution)
       let history = solution + "Solved by " + email;
-      let results = await axios.post(`${env.apiUrl}/add-details`,{
+      await axios.post(`${env.apiUrl}/add-details`,{
         requestId ,
         history,
       }).then(data => console.log(data))
 
-      let assignClosed = await axios.put(`${env.apiUrl}/update-solve/${props.value._id}`,{email},{
+      await axios.put(`${env.apiUrl}/update-solve/${props.value._id}`,{email},{
         headers:{"Authorization":`Bearer ${token}`}
       }).then(data => console.log(data)).then(handleClose)
      }

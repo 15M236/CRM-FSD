@@ -1,6 +1,6 @@
 import React from 'react'
 import Form from 'react-bootstrap/Form';
-import { useState , useParams } from 'react';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import env from './environment'
 import axios from 'axios'
@@ -17,7 +17,7 @@ export default function AddQuery() {
     
     const createQuery = async() => {
         console.log(subject+" "+critical+" "+description+" "+createdBy)
-        let result = await axios.post(`${env.apiUrl}/add-request`,
+          await axios.post(`${env.apiUrl}/add-request`,
         {subject , description , createdBy , critical},
         {
             headers:{"Authorization":`Bearer ${token}`}
