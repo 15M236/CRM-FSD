@@ -17,7 +17,7 @@ export default function DisplayUserDetails() {
 
     useEffect(() => {
       listDetails()
-    },[])
+    })
 
     const handleAccess = async(datum) => {
       let res = await axios.put(`${env.apiUrl}/update-access/${datum._id}`,{},{
