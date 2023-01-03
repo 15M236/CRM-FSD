@@ -21,7 +21,6 @@ export default function Queries() {
   else {
     Navigate('/login')
    }
-  console.log(queries)
 }
 
   useEffect( () => {    

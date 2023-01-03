@@ -11,7 +11,7 @@ export default function SignUp() {
   const [lastName , setLastName] = useState("")
   const [email , setEmail] = useState("")
   const [password , setPassword] = useState("")
-  const navigate = useNavigate
+  const navigate = useNavigate()
   const handleLogin = async() => {
     let res = await axios.post(`${env.apiUrl}/users/signup`,{
       firstName,
@@ -32,13 +32,13 @@ export default function SignUp() {
       <Form>
       <Form.Group className="mb-3">
           <Form.Label>First Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter Name" 
+          <Form.Control type="text" placeholder="Enter First Name" 
           value={firstName} onChange={(e)=>setFirstName(e.target.value)}/>
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label>Last Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter Phone Number" 
+          <Form.Control type="text" placeholder="Enter Last Name" 
           value={lastName} onChange={(e)=>setLastName(e.target.value)}/>
         </Form.Group>
 
