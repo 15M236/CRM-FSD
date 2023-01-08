@@ -18,7 +18,7 @@ export default function Title() {
               <Container>
                 <Navbar.Brand href="/">CRM</Navbar.Brand>
                   <Nav className="me-auto">
-                    <Nav.Link onClick={() => navigate('/login')}>Login</Nav.Link>
+                    {!role && <Nav.Link onClick={() => navigate('/login')}>Login</Nav.Link>}
                     <Nav.Link onClick={() => navigate('/signup')}>SignUp</Nav.Link>
                     <Nav.Link onClick={() => navigate('/list-queries')}>Queries</Nav.Link>
                     
