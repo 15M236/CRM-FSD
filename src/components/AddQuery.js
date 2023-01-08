@@ -16,7 +16,6 @@ export default function AddQuery() {
    
     
     const createQuery = async() => {
-        console.log(subject+" "+critical+" "+description+" "+createdBy)
           await axios.post(`${env.apiUrl}/add-request`,
         {subject , description , createdBy , critical},
         {

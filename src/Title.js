@@ -16,16 +16,17 @@ export default function Title() {
          <div>
             <Navbar bg="light" variant="light">
               <Container>
-                <Navbar.Brand href="javascript(void)">CRM</Navbar.Brand>
+                <Navbar.Brand href="/">CRM</Navbar.Brand>
                   <Nav className="me-auto">
                     <Nav.Link onClick={() => navigate('/login')}>Login</Nav.Link>
                     <Nav.Link onClick={() => navigate('/signup')}>SignUp</Nav.Link>
                     <Nav.Link onClick={() => navigate('/list-queries')}>Queries</Nav.Link>
-                    <Nav.Link onClick={handleLogOut}>Logout</Nav.Link>
+                    
                     <Nav.Link onClick={() => navigate('/add-request')}>Add Request</Nav.Link>
                     {isLoggedIn && 
                        role === "admin" ? <Nav.Link onClick={() => navigate('/dashboard')}>DashBoard</Nav.Link> 
                        : null }
+                       {role && <Nav.Link onClick={handleLogOut}>Logout</Nav.Link>}
                   </Nav>
               </Container>
             </Navbar>

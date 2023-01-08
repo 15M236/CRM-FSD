@@ -3,14 +3,15 @@ import axios from 'axios';
 import env from './environment';
 import Table from 'react-bootstrap/Table';
 import DisplayItems from './DisplayItems';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function Queries() {
+  const[session,setSession] = useState("Queries")
   let token = sessionStorage.getItem('token');
-  const[queries,setQueries] = useState("")
-
+  const[queries,setQueries] = useState("");
+  const navigate = useNavigate();
   const listQueries = async() => {
-    if (sessionStorage.getItem('token')) { 
+    if (sessionStorage.getItem('token')) {
     let res = await axios.get(`${env.apiUrl}/list-queries`,{
       headers:{"Authorization":`Bearer ${token}`}
     })
@@ -19,8 +20,11 @@ export default function Queries() {
     }
   }
   else {
-    Navigate('/login')
-   }
+    setSession("Not logged in")
+    setTimeout(() => {
+      navigate('/login')
+    }, 2000)
+  }
 }
 
   useEffect( () => {    
@@ -29,6 +33,7 @@ export default function Queries() {
 
   return (
     <div>
+      <h2 >{session}</h2>
      { sessionStorage.getItem('token') && 
       <Table striped bordered hover>
           <thead>
