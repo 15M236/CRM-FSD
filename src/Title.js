@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom'
 export default function Title() {
     let navigate = useNavigate();  
     const role = sessionStorage.getItem('role');
+    const isSignedIn = sessionStorage.getItem('isSignedIn');
     const isLoggedIn = sessionStorage.getItem('isLoggedIn');
     const handleLogOut = () => {
       sessionStorage.clear()
@@ -19,7 +20,7 @@ export default function Title() {
                 <Navbar.Brand href="/">CRM</Navbar.Brand>
                   <Nav className="me-auto">
                     {!role && <Nav.Link onClick={() => navigate('/login')}>Login</Nav.Link>}
-                    <Nav.Link onClick={() => navigate('/signup')}>SignUp</Nav.Link>
+                    {!isSignedIn && <Nav.Link onClick={() => navigate('/signup')}>SignUp</Nav.Link>}
                     <Nav.Link onClick={() => navigate('/list-queries')}>Queries</Nav.Link>
                     
                     <Nav.Link onClick={() => navigate('/add-request')}>Add Request</Nav.Link>

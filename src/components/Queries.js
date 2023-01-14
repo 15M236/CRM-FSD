@@ -10,6 +10,7 @@ export default function Queries() {
   let token = sessionStorage.getItem('token');
   const[queries,setQueries] = useState("");
   const navigate = useNavigate();
+  
   const listQueries = async() => {
     if (sessionStorage.getItem('token')) {
     let res = await axios.get(`${env.apiUrl}/list-queries`,{

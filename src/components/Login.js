@@ -27,7 +27,7 @@ export default function Login() {
     sessionStorage.setItem('email',res.data.user.email)
     sessionStorage.setItem('isvalid',res.data.user.isvalid)
     sessionStorage.setItem('isLoggedIn',"true")
-    console.log(res.data)
+    sessionStorage.setItem('isSignedIn',true)
     navigate('/list-queries')
   }
 }

@@ -10,12 +10,14 @@ export default function AddQuery() {
     const [subject,setSubject] = useState("")
     const [critical,setCriticality] = useState("")
     const [description,setDescription] = useState("")
+    const[session,setSession] = useState("Queries")
     const createdBy = sessionStorage.getItem('email')
     const token = sessionStorage.getItem('token')
     const navigate = useNavigate()
    
     
     const createQuery = async() => {
+      if (sessionStorage.getItem('token')) {
           await axios.post(`${env.apiUrl}/add-request`,
         {subject , description , createdBy , critical},
         {
@@ -23,12 +25,22 @@ export default function AddQuery() {
           }).then(data => console.log(data))
         //   console.log(result)
           navigate('/list-queries')
+        }else {
+          setSession("Not logged in")
+          setTimeout(() => {
+            navigate('/login')
+          }, 2000)
+        }
     }
     
     return (
-        <div className="request-table">
+      <>
+      <p>{session}</p>
+       <div className="request-table">
           { sessionStorage.getItem('token') &&
+          
         <>
+        
         <Form.Select aria-label="Default select example" 
             value={subject} 
             onChange={(e)=>setSubject(e.target.value)}>
@@ -59,6 +71,8 @@ export default function AddQuery() {
         </>}
         
         </div>
+      </>
+       
         
       );
 }
