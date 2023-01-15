@@ -1,4 +1,4 @@
-import React , {useState , useEffect } from 'react'
+import React , {useState , useEffect , useCallback } from 'react'
 import axios from 'axios';
 import env from './environment';
 import Table from 'react-bootstrap/Table';
@@ -11,7 +11,7 @@ export default function Queries() {
   const[queries,setQueries] = useState("");
   const navigate = useNavigate();
   
-  const listQueries = async() => {
+  const listQueries = useCallback( async() => {
     if (sessionStorage.getItem('token')) {
     let res = await axios.get(`${env.apiUrl}/list-queries`,{
       headers:{"Authorization":`Bearer ${token}`}
@@ -26,11 +26,11 @@ export default function Queries() {
       navigate('/login')
     }, 2000)
   }
-}
+},[token,navigate])
 
   useEffect( () => {    
       listQueries()
-  })
+  },[listQueries])
 
   return (
     <div>
