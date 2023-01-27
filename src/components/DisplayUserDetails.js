@@ -53,7 +53,7 @@ export default function DisplayUserDetails() {
                     <td>{datum.lastName}</td>
                     <td>{datum.email}</td>
                     <td>{datum.role}</td>
-                    <Button onClick={() => handleAccess(datum)}>Access</Button>
+                    <Button onClick={() => handleAccess(datum)}>Accept</Button>
                     <Button onClick={() => handleDelete(datum)}>Delete</Button>
                   </tr>
                 }    
