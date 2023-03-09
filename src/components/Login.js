@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner'
 import Form from 'react-bootstrap/Form';
 import env from './environment'
@@ -33,29 +32,55 @@ export default function Login() {
 }
 
   return (
-    <div>
-       <div className="login-wrapper">
-      <p>Login to Continue</p>
-    </div>
-    <div className='login-main-wrapper'>
-      <Form>
-        <Form.Group className="mb-3">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" value={email} 
-          onChange={(e)=>setEmail(e.target.value)}/>
-        </Form.Group>
 
-        <Form.Group className="mb-3">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" 
-          value={password} onChange={(e)=>setPassword(e.target.value)}/>
-        </Form.Group>
-        <Button variant="primary" onClick={()=>handleLogin()}>
-          Submit
-        </Button>
-      </Form>
-      { toggle ? <Spinner animation="border" variant="primary" />:<></>}
-    </div>  
+<section className="login-wrapper">
+  <div className="px-4 py-5 px-md-5 text-center text-lg-start" >
+    <div className="container">
+      <div className="row gx-lg-5 align-items-center">
+        <div className="col-lg-6 mb-5 mb-lg-0">
+          <h1 className="my-5 display-3 fw-bold ls-tight">
+            The best platform <br />
+            <span className="text-primary">for your queries</span>
+          </h1>
+        
+        </div>
+
+        <div className="col-lg-6 mb-5 mb-lg-0">
+          <div className="card">
+            <div className="card-body py-5 px-md-5">
+              <form>
+                <h5 className='mb-4'>Enter details to login</h5>
+                <div className="form-outline mb-4">
+                  <Form.Control type="email" placeholder="Enter email" value={email} 
+                   onChange={(e)=>setEmail(e.target.value)}/>
+                </div>
+
+                <div className="form-outline mb-4">
+                  <Form.Control type="password" placeholder="Password" 
+                  value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                </div>
+
+                <div className="form-check d-flex justify-content-center mb-4">
+                  </div>
+
+                <button type="submit" className="btn btn-primary btn-block mb-4" onClick={()=>handleLogin()}>
+                  Submit
+                </button>
+
+                <div className="text-center">
+                  <p>Dont have account ? </p>
+                  <button type="submit" className="btn btn-primary btn-block mb-4" onClick={() => navigate('/')}>
+                  Sign up
+                </button>
+                </div>
+              </form>
+              { toggle ? <Spinner animation="border" variant="primary" />:<></>}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</section>
   )
 }

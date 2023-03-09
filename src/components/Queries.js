@@ -6,7 +6,7 @@ import DisplayItems from './DisplayItems';
 import { useNavigate } from 'react-router-dom';
 
 export default function Queries() {
-  const[session,setSession] = useState("Queries")
+  // const[session,setSession] = useState("Queries")
   let token = sessionStorage.getItem('token');
   const[queries,setQueries] = useState("");
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ export default function Queries() {
     }
   }
   else {
-    setSession("Not logged in")
+    // setSession("Not logged in")
     setTimeout(() => {
       navigate('/login')
     }, 2000)
@@ -34,7 +34,7 @@ export default function Queries() {
 
   return (
     <div>
-      <h2 >{session}</h2>
+      {/* <h2 >{session}</h2> */}
      { sessionStorage.getItem('token') && 
       <Table striped bordered hover>
           <thead>
