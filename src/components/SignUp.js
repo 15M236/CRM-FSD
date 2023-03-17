@@ -12,24 +12,26 @@ export default function SignUp() {
   const [email , setEmail] = useState("")
   const [password , setPassword] = useState("")
   const navigate = useNavigate()
-  const handleLogin = async() => {
+
+  const handleSignIn = async() => {
     let res = await axios.post(`${env.apiUrl}/users/signup`,{
       firstName,
       lastName,
       email,
       password,
     })
+    console.log(res)
     if(res.data.statusCode===200)
     {
       sessionStorage.setItem('isSignedIn',true)
-     navigate('/login')
+      navigate('/login')
     }
   }
 
   return (
     <section className="login-wrapper">
-  <div className="px-4 py-5 px-md-5 text-center text-lg-start" >
-    <div className="container">
+    <div className="px-4 py-5 px-md-5 text-center text-lg-start" >
+      <div className="container">
       <div className="row gx-lg-5 align-items-center">
         <div className="col-lg-6 mb-5 mb-lg-0">
           <h1 className="my-5 display-3 fw-bold ls-tight">
@@ -72,9 +74,8 @@ export default function SignUp() {
                 <div className="form-check d-flex justify-content-center mb-4">
                   </div>
 
-                <Button type="submit" className="btn btn-primary btn-block mb-4" onClick={()=>handleLogin()}>
-                Submit
-                </Button>
+                <Button type="submit" className="btn btn-primary mb-4" variant="outlined"
+                onClick={()=>handleSignIn()}>Submit</Button>
               </form>
             </div>
           </div>

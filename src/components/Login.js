@@ -14,7 +14,7 @@ export default function Login() {
 
   const handleLogin = async() => {
   setToggle(true)
-  let res =await axios.post(`${env.apiUrl}/users/login-user`,{
+  let res = await axios.post(`${env.apiUrl}/users/login-user`,{
     email ,
     password ,
   })
@@ -63,13 +63,13 @@ export default function Login() {
                 <div className="form-check d-flex justify-content-center mb-4">
                   </div>
 
-                <button type="submit" className="btn btn-primary btn-block mb-4" onClick={()=>handleLogin()}>
+                <button type="submit" className="btn btn-primary mb-4" onClick={()=>handleLogin()}>
                   Submit
                 </button>
 
                 <div className="text-center">
                   <p>Dont have account ? </p>
-                  <button type="submit" className="btn btn-primary btn-block mb-4" onClick={() => navigate('/')}>
+                  <button type="submit" className="btn btn-primary mb-4" onClick={() => navigate('/')}>
                   Sign up
                 </button>
                 </div>

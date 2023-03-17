@@ -23,7 +23,6 @@ function App() {
       <Route path="/list-userDetails" element={<DisplayUserDetails/>}/>
     </Routes>
     </BrowserRouter>
-
   );
 }
 
