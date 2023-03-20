@@ -7,12 +7,14 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
+  
   const[email,setEmail] = useState("")
   const[password,setPassword] = useState("")
   const [toggle,setToggle]=useState(false)
   const navigate = useNavigate()
 
-  const handleLogin = async() => {
+  const handleLogin = async(e) => {
+    e.preventDefault()
   setToggle(true)
   let res = await axios.post(`${env.apiUrl}/users/login-user`,{
     email ,
@@ -63,7 +65,7 @@ export default function Login() {
                 <div className="form-check d-flex justify-content-center mb-4">
                   </div>
 
-                <button type="submit" className="btn btn-primary mb-4" onClick={()=>handleLogin()}>
+                <button type="submit" className="btn btn-primary mb-4" onClick={(e)=>handleLogin(e)}>
                   Submit
                 </button>
 

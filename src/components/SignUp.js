@@ -13,7 +13,9 @@ export default function SignUp() {
   const [password , setPassword] = useState("")
   const navigate = useNavigate()
 
-  const handleSignIn = async() => {
+  const handleSignIn = async(e) => {
+     e.preventDefault()
+
     let res = await axios.post(`${env.apiUrl}/users/signup`,{
       firstName,
       lastName,
@@ -75,7 +77,7 @@ export default function SignUp() {
                   </div>
 
                 <Button type="submit" className="btn btn-primary mb-4" variant="outlined"
-                onClick={()=>handleSignIn()}>Submit</Button>
+                onClick={(e)=>handleSignIn(e)}>Submit</Button>
               </form>
             </div>
           </div>
